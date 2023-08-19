@@ -15,6 +15,7 @@ public protocol MediaCoordinatorDelegate: AnyObject {
     func moreEventTriggered()
     func settingEventTriggered()
     func customEventTriggered()
+    func closeEventTriggered()
 }
 
 public final class MediaCoordinator {
@@ -112,6 +113,7 @@ extension MediaCoordinator: GalleryModuleOutput {
 
     public func closeEventTriggered() {
         navigationViewController.popViewController(animated: true)
+        output?.closeEventTriggered()
     }
 
     public func selectMediaItemsEventTriggered(_ mediaItems: [MediaItem]) {
