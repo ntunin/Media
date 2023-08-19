@@ -113,7 +113,7 @@ extension MediaCoordinator: GalleryModuleOutput {
 
     public func closeEventTriggered() {
         navigationViewController.popViewController(animated: true)
-        output?.closeEventTriggered()
+        delegate?.closeEventTriggered()
     }
 
     public func selectMediaItemsEventTriggered(_ mediaItems: [MediaItem]) {
