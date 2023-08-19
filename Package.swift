@@ -20,7 +20,7 @@ let package = Package(
         .package(name: "MediaService", url: "https://github.com/rosberry/MediaService", .branch("master")),
         .package(name: "Ion", url: "https://github.com/rosberry/ion", .branch("master")),
         .package(name: "Texstyle", url: "https://github.com/rosberry/texstyle", .branch("master")),
-        .package(name: "Rcam", url: "https://github.com/rosberry/rcam", .branch("master"))
+        .package(name: "Rcam", url: "https://github.com/ntunin/rcam", .branch("master"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

@@ -48,7 +48,7 @@
     {
       "identity" : "rcam",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/rosberry/rcam",
+      "location" : "https://github.com/ntunin/rcam",
       "state" : {
         "branch" : "master",
         "revision" : "83f7e38f18b1bb2c2ee0029df563941b25c1a6f2"
