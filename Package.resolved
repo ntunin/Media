@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rosberry/Framezilla",
       "state" : {
-        "branch" : "feature/update-spm-manifest",
-        "revision" : "22394eee07e845df421f663827d236f36a73587c"
+        "revision" : "1a757e608731f8d51accc1e9864edc1c41d9e75e",
+        "version" : "5.1.2"
       }
     },
     {
@@ -43,15 +43,6 @@
       "state" : {
         "branch" : "master",
         "revision" : "ea293038b6934f97763f9f90d40afc002e703055"
-      }
-    },
-    {
-      "identity" : "rcam",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ntunin/rcam",
-      "state" : {
-        "branch" : "master",
-        "revision" : "83f7e38f18b1bb2c2ee0029df563941b25c1a6f2"
       }
     },
     {

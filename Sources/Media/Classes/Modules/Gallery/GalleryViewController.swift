@@ -7,7 +7,6 @@ import CollectionViewTools
 import Framezilla
 import MediaService
 import AVFoundation
-import RCam
 
 public final class GalleryViewController: UIViewController {
 
@@ -292,19 +291,6 @@ public final class GalleryViewController: UIViewController {
 
     // MARK: - Private
 
-    private func showCamera() {
-        let camera = CameraImpl()
-        camera.zoomRangeLimits = 1.0...5.0
-        let cameraViewController = CameraViewController(cameraService: camera)
-
-        let placeholderPermissionView = PlaceholderView(placeholderAppearance: mediaAppearance.permission)
-
-        cameraViewController.permissionsPlaceholderView = placeholderPermissionView
-        cameraViewController.modalPresentationStyle = .overCurrentContext
-        cameraViewController.delegate = self
-        present(cameraViewController, animated: true)
-    }
-
     private func setupNavigationBar() {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -312,12 +298,6 @@ public final class GalleryViewController: UIViewController {
         navigationController?.view.backgroundColor = .white
 
         navigationItem.titleView = titleView
-        if navigationAppearance.shouldShowCameraButton {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: navigationAppearance.cameraImage?.withRenderingMode(.alwaysOriginal),
-                                                                style: .plain,
-                                                                target: self,
-                                                                action: #selector(cameraButtonPressed))
-        }
         if navigationAppearance.shouldShowBackButton {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: navigationAppearance.backImage?.withRenderingMode(.alwaysOriginal),
                                                                style: .plain,
@@ -338,10 +318,6 @@ public final class GalleryViewController: UIViewController {
 
     // MARK: - Private Action
 
-    @objc private func cameraButtonPressed() {
-        showCamera()
-    }
-
     @objc private func closeButtonPressed() {
         presenter.closeEventTriggered()
     }
@@ -359,17 +335,5 @@ extension GalleryViewController: UIScrollViewDelegate {
         let delta = scrollView.panGestureRecognizer.translation(in: scrollView).y
         let direction: GalleryPresenter.FocusDirection = (delta > 0.0) ? .down : .up
         presenter.scrollEventTriggered(direction: direction)
-    }
-}
-
-extension GalleryViewController: CameraViewControllerDelegate {
-    public func cameraViewController(_ viewController: CameraViewController, imageCaptured image: UIImage, orientationApplied: Bool) {
-        presenter.makePhotoEventTriggered(image)
-        viewController.dismiss(animated: true)
-    }
-
-    public func cameraViewControllerCloseEventTriggered(_ viewController: CameraViewController) {
-        presenter.permissionEventTriggered()
-        viewController.dismiss(animated: true)
     }
 }
